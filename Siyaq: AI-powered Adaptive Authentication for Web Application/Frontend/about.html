@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>عن سياق - About</title>
+    <link rel="stylesheet" href="/frontend/style.css">
+</head>
+<body>
+
+<!-- ANIMATED BACKGROUND -->
+<div class="page-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+<!-- TOP BAR -->
+<header class="top-bar">
+    <div class="top-bar-container">
+        <div class="top-bar-container">
+        <div class="logo">
+    <img src="/frontend/logo.png" alt="سياق" height="150">
+</div>
+        <nav class="nav-links">
+           <a id="navHome" href="/frontend/home.html">الرئيسية</a>
+            <a href="/frontend/about.html" id="navAbout">عن سياق</a>
+            <a href="/frontend/login.html" href="#">تسجيل دخول</a>
+        </nav>
+        <div class="top-actions">
+            <button class="lang-btn" id="btnAr" onclick="setLang('ar')">العربية</button>
+            |
+            <button class="lang-btn" id="btnEn" onclick="setLang('en')">English</button>
+        </div>
+    </div>
+</header>
+
+<!-- Breadcrumb -->
+<div class="page-head">
+    <div class="page-head-inner">
+        <div class="breadcrumbs">
+            <a href="/frontend/home.html" id="bcHome">الرئيسية</a>
+            <span class="sep">›</span>
+            <span id="bcCurrent">عن سياق</span>
+        </div>
+    </div>
+</div>
+
+<!-- Layout -->
+<main class="about-layout">
+
+    <!-- Sidebar -->
+    <aside class="side-menu">
+        <div class="side-title">
+            <span class="side-icon">⌂</span>
+            <span id="sideMainTitle">عن سياق</span>
+        </div>
+        <div class="accordion">
+            <button class="acc-btn is-open" data-target="#secAbout" type="button">
+                <span id="accAboutTitle">عن سياق</span>
+                <span class="chev">⌃</span>
+            </button>
+            <div class="acc-panel is-open" id="secAbout">
+                <a class="acc-link active" href="#" data-content="about" id="menuAbout">عن سياق</a>
+                <a class="acc-link" href="#" data-content="vision" id="menuVision">الرؤية</a>
+                <a class="acc-link" href="#" data-content="mission" id="menuMission">الرسالة</a>
+                <a class="acc-link" href="#" data-content="goals" id="menuGoals">الأهداف</a>
+            </div>
+            <button class="acc-btn" data-target="#secPolicies" type="button">
+                <span id="accPoliciesTitle">السياسات والإجراءات</span>
+                <span class="chev">⌃</span>
+            </button>
+            <div class="acc-panel" id="secPolicies">
+                <a class="acc-link" href="#" data-content="systems" id="menuSystems">أنظمة وتعليمات</a>
+                <a class="acc-link" href="#" data-content="terms" id="menuTerms">شروط الاستخدام</a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Content -->
+    <section class="content-area">
+        <h1 class="page-title" id="aboutTitle">عن سياق</h1>
+        <div class="content-card">
+            <p id="aboutText1">
+                سياق هي خدمة المصادقة الرقمية المتكاملة، وتهدف إلى تقديم خدمات التحقق من الهوية رقمياً
+                للمواطنين والمقيمين والزوار، وذلك من خلال الاستفادة من الإمكانات التقنية، وتسخير التقنيات الحديثة؛
+                بما يوفر تجربة مستخدم متميزة عبر خدمات مؤتمتة ذات موثوقية وأمان وكفاءة عالية.
+            </p>
+            <p id="aboutText2">
+                وحققت سياق قفزات كبيرة منذ إطلاقها عبر خدماتها المتقدمة، وأصبحت تنافس منصات المصادقة الرقمية
+                على مستوى العالم، ومن أوائل خدمات التحقق الرقمي على مستوى المنطقة. حيث توسعت خدمات سياق
+                لتشمل قطاعات متعددة وصولاً إلى استحداث خدمات مصادقة جديدة تخدم العديد من الجهات الحكومية والقطاع الخاص.
+            </p>
+
+            <div class="content-block hidden" id="contentVision">
+                <h2 id="visionTitle">الرؤية</h2>
+                <p id="visionText">تقديم تجربة مصادقة رقمية موثوقة وآمنة تمكّن المستفيدين من الوصول للخدمات بسهولة وفعالية.</p>
+            </div>
+            <div class="content-block hidden" id="contentMission">
+                <h2 id="missionTitle">الرسالة</h2>
+                <p id="missionText">تمكين التحول الرقمي لخدمات المصادقة وتطويرها بما يحقق رضا المستفيد ويعزز جودة الحياة.</p>
+            </div>
+            <div class="content-block hidden" id="contentGoals">
+                <h2 id="goalsTitle">الأهداف</h2>
+                <ul class="bullets">
+                    <li id="goal1">رفع كفاءة خدمات المصادقة الإلكترونية وسهولة الوصول.</li>
+                    <li id="goal2">تعزيز أمن المعلومات وحماية بيانات المستخدم.</li>
+                    <li id="goal3">تحسين تجربة المستخدم عبر خدمات مؤتمتة وموثوقة.</li>
+                </ul>
+            </div>
+            <div class="content-block hidden" id="contentSystems">
+                <h2 id="systemsTitle">أنظمة وتعليمات</h2>
+                <p id="systemsText">تُعرض هنا الأنظمة والتعليمات المنظمة لاستخدام سياق والخدمات ذات العلاقة.</p>
+            </div>
+            <div class="content-block hidden" id="contentTerms">
+                <h2 id="termsTitle">شروط الاستخدام</h2>
+                <p id="termsText">باستخدامك لسياق فأنت توافق على الشروط والأحكام وسياسات الخصوصية والأمان.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script src="/frontend/lang.js"></script>
+<script>
+    document.querySelectorAll(".acc-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const panel = document.querySelector(btn.dataset.target);
+            const open = panel.classList.contains("is-open");
+            panel.classList.toggle("is-open", !open);
+            btn.classList.toggle("is-open", !open);
+        });
+    });
+
+    const links = document.querySelectorAll(".acc-link");
+    const blocks = {
+        about: [], vision: ["contentVision"], mission: ["contentMission"],
+        goals: ["contentGoals"], systems: ["contentSystems"], terms: ["contentTerms"],
+    };
+
+    function showContent(key) {
+        document.querySelectorAll(".content-block").forEach(b => b.classList.add("hidden"));
+        links.forEach(a => a.classList.toggle("active", a.dataset.content === key));
+        (blocks[key] || []).forEach(id => document.getElementById(id).classList.remove("hidden"));
+        const mapTitle = { about:"aboutTitle", vision:"visionTitle", mission:"missionTitle", goals:"goalsTitle", systems:"systemsTitle", terms:"termsTitle" };
+        const picked = mapTitle[key] ? document.getElementById(mapTitle[key]) : null;
+        if (picked) document.getElementById("aboutTitle").textContent = picked.textContent;
+    }
+
+    links.forEach(a => a.addEventListener("click", (e) => { e.preventDefault(); showContent(a.dataset.content); }));
+    showContent("about");
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title id="resetTitle">إعادة تعيين كلمة المرور</title>
+    <link rel="stylesheet" href="/frontend/style.css">
+    <style>
+        .password-rules {
+            color: gray;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<<header class="top-bar">
+    <div class="top-bar-container">
+        <div class="logo">
+    <img src="/frontend/logo.png" alt="سياق" height="150">
+</div>
+        <nav class="nav-links">
+           <a id="navHome" href="/frontend/home.html">الرئيسية</a>
+            <a href="/frontend/about.html" id="navAbout">عن سياق</a>
+            <a href="/frontend/login.html" href="#">تسجيل دخول</a>
+        </nav>
+        <div class="top-actions">
+            <button class="lang-btn" id="btnAr" onclick="setLang('ar')">العربية</button>
+
+            <button class="lang-btn" id="btnEn" onclick="setLang('en')">English</button>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+    <h2 id="resetTitle">إعادة تعيين كلمة المرور</h2>
+
+    <p class="helper-text" id="resetText">
+        أدخل كلمة المرور الجديدة وسيتم تحديثها لحسابك
+    </p>
+
+    <form id="resetForm">
+        <label for="newPassword" id="newPasswordLabel">كلمة المرور الجديدة</label>
+        <input
+            type="password"
+            id="newPassword"
+            placeholder="ادخل كلمة المرور الجديدة"
+            required
+        >
+
+        <label for="confirmPassword" id="confirmPasswordLabel">تأكيد كلمة المرور</label>
+        <input
+            type="password"
+            id="confirmPassword"
+            placeholder="اعد كتابة كلمة المرور"
+            required
+        >
+
+        <div class="password-rules" id="passwordRules">
+            يجب أن تحتوي كلمة المرور على:<br><br>
+            • 8 أحرف على الأقل<br>
+            • حرف كبير (A-Z)<br>
+            • حرف صغير (a-z)<br>
+            • رقم (0-9)
+        </div>
+
+        <button class="btn" type="submit" id="resetBtn">إعادة التعيين</button>
+    </form>
+
+    <div class="link">
+        <a href="/frontend/login.html" id="backToLogin">← العودة لتسجيل الدخول</a>
+    </div>
+</div>
+
+<script src="/frontend/lang.js"></script>
+<script src="/frontend/reset.js"></script>
+</body>
+
+</html>

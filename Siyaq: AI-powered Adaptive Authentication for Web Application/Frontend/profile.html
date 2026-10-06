@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>الملف الشخصي - سياق</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── Profile Page Layout ── */
+        .profile-wrapper {
+            min-height: calc(100vh - 80px);
+            padding: 2.5rem 1.5rem 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .profile-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(18px);
+            width: 100%;
+            max-width: 680px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        /* Header strip */
+        .profile-header {
+            background: linear-gradient(135deg, #0a4a8a 0%, #0d6efd 50%, #00c6ff 100%);
+            padding: 2.5rem 2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 80% 50%, rgba(0,198,255,0.3) 0%, transparent 60%);
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            border: 3px solid rgba(255,255,255,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #fff;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .profile-header-info {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 0.3rem;
+        }
+
+        .profile-role-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            font-size: 0.78rem;
+            padding: 3px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        /* Body */
+        .profile-body {
+            padding: 2rem;
+        }
+
+        .profile-section-title {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #0d6efd;
+            margin: 0 0 1rem;
+            font-weight: 700;
+        }
+
+        .profile-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .profile-field {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 0.9rem 1rem;
+        }
+
+        .field-label {
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        .field-value {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        .field-value.placeholder {
+            color: rgba(255,255,255,0.25);
+            font-style: italic;
+            font-size: 0.85rem;
+        }
+
+        /* Divider */
+        .profile-divider {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            margin: 1.5rem 0;
+        }
+
+        /* Action buttons */
+        .profile-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            flex: 1;
+            min-width: 130px;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0d6efd, #00c6ff);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(13,110,253,0.35);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(13,110,253,0.5); }
+
+        .btn-danger {
+            background: rgba(220, 53, 69, 0.12);
+            color: #ff6b6b;
+            border: 1px solid rgba(220, 53, 69, 0.25);
+        }
+        .btn-danger:hover { background: rgba(220, 53, 69, 0.2); transform: translateY(-2px); }
+
+        /* Loading state */
+        .loading-pulse {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .profile-fields { grid-template-columns: 1fr; }
+            .profile-header { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ANIMATED BACKGROUND -->
+<div class="page-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+<!-- TOP BAR -->
+<header class="top-bar">
+    <div class="top-bar-container">
+        <div class="logo">
+            <img src="logo.png" alt="سياق" height="150">
+        </div>
+        <nav class="nav-links">
+            <a id="navHome" href="/frontend/home.html">الرئيسية</a>
+            <a href="/frontend/about.html" id="navAbout">عن سياق</a>
+            <a href="/frontend/login.html" href="#">تسجيل دخول</a>
+        </nav>
+        <div class="top-actions">
+            <button class="lang-btn" id="btnAr" onclick="setLang('ar')">العربية</button>
+            |
+            <button class="lang-btn" id="btnEn" onclick="setLang('en')">English</button>
+        </div>
+    </div>
+</header>
+
+<!-- PROFILE CONTENT -->
+<div class="profile-wrapper">
+    <div class="profile-card">
+
+        <!-- Header -->
+        <div class="profile-header">
+            <div class="profile-avatar" id="avatarInitials">👤</div>
+            <div class="profile-header-info">
+                <div class="profile-name" id="profileFullName">—</div>
+                <span class="profile-role-badge" id="profileRoleBadge">مستخدم</span>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="profile-body">
+            <p class="profile-section-title" id="secPersonal">المعلومات الشخصية</p>
+
+            <div class="profile-fields">
+                <div class="profile-field">
+                    <span class="field-label" id="lblUsername">اسم المستخدم</span>
+                    <div class="field-value" id="pvUsername">—</div>
+                </div>
+                <div class="profile-field">
+                    <span class="field-label" id="lblUserId">رقم المستخدم</span>
+                    <div class="field-value" id="pvUserId">—</div>
+                </div>
+                <div class="profile-field">
+                    <span class="field-label" id="lblFirstName">الاسم الأول</span>
+                    <div class="field-value" id="pvFirstName">—</div>
+                </div>
+                <div class="profile-field">
+                    <span class="field-label" id="lblLastName">اسم العائلة</span>
+                    <div class="field-value" id="pvLastName">—</div>
+                </div>
+                <div class="profile-field">
+                    <span class="field-label" id="lblEmail">البريد الإلكتروني</span>
+                    <div class="field-value" id="pvEmail">—</div>
+                </div>
+                <div class="profile-field">
+                    <span class="field-label" id="lblPhone">رقم الجوال</span>
+                    <div class="field-value" id="pvPhone">—</div>
+                </div>
+                <div class="profile-field">
+                    <span class="field-label" id="lblNationalId">رقم الهوية</span>
+                    <div class="field-value" id="pvNationalId">—</div>
+                </div>
+                <div class="profile-field">
+                    <span class="field-label" id="lblRole">الصلاحية</span>
+                    <div class="field-value" id="pvRole">—</div>
+                </div>
+            </div>
+
+            <hr class="profile-divider">
+
+            <div class="profile-actions">
+                <button class="btn-action btn-danger" id="btnLogout" onclick="logout()">
+                    🚪 <span id="logoutLabel">تسجيل الخروج</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="/frontend/profile.js"></script>
+<script src="/frontend/lang.js"></script>
+<script>
+    function logout() {
+        localStorage.removeItem("user_id");
+        localStorage.removeItem("username");
+        localStorage.removeItem("role");
+        window.location.href = "login.html";
+    }
+
+    function loadProfile() {
+        const userId     = localStorage.getItem("user_id");
+        const username   = localStorage.getItem("username");
+        const role       = localStorage.getItem("role");
+        const firstName  = localStorage.getItem("first_name");
+        const lastName   = localStorage.getItem("last_name");
+        const email      = localStorage.getItem("email");
+        const phone      = localStorage.getItem("phone");
+        const nationalId = localStorage.getItem("national_id");
+
+        // Redirect if not logged in
+        if (!userId) {
+            window.location.href = "login.html";
+            return;
+        }
+
+        // Fill all fields from localStorage
+        document.getElementById("pvUsername").textContent   = username   || "—";
+        document.getElementById("pvUserId").textContent     = userId     || "—";
+        document.getElementById("pvRole").textContent       = role       || "—";
+        document.getElementById("pvFirstName").textContent  = firstName  || "—";
+        document.getElementById("pvLastName").textContent   = lastName   || "—";
+        document.getElementById("pvEmail").textContent      = email      || "—";
+        document.getElementById("pvPhone").textContent      = phone      || "—";
+        document.getElementById("pvNationalId").textContent = nationalId || "—";
+
+        document.getElementById("profileRoleBadge").textContent = role || "مستخدم";
+
+        // Full name in header
+        const fullName = [firstName, lastName].filter(Boolean).join(" ");
+        document.getElementById("profileFullName").textContent = fullName || username || "—";
+
+        // Avatar initials
+        const initials = [(firstName||"")[0], (lastName||"")[0]].filter(Boolean).join("").toUpperCase();
+        document.getElementById("avatarInitials").textContent = initials || "👤";
+    }
+
+    loadProfile();
+</script>
+</body>
+</html>

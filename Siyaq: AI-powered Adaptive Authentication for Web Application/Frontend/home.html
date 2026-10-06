@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>الرئيسية - سياق</title>
+    <link rel="stylesheet" href="/frontend/style.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="top-bar">
+    <div class="top-bar-container">
+        <div class="logo">
+    <img src="/frontend/logo.png" alt="سياق" height="150">
+</div>
+        <nav class="nav-links">
+           <a id="navHome" href="/frontend/home.html">الرئيسية</a>
+            <a href="/frontend/about.html" id="navAbout">عن سياق</a>
+            <a href="/frontend/login.html" href="#">تسجيل دخول</a>
+        </nav>
+        <div class="top-actions">
+            <button class="lang-btn" id="btnAr" onclick="setLang('ar')">العربية</button>
+
+            <button class="lang-btn" id="btnEn" onclick="setLang('en')">English</button>
+        </div>
+    </div>
+</header>
+
+<!-- BANNER -->
+<section class="banner">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="scan-line"></div>
+
+    <div class="banner-content">
+        <span class="banner-badge" id="bannerBadge">سياق — خدمة مصادقة رقمية</span>
+
+        <h1 class="banner-heading">
+            <span class="typing-container">
+                <span class="typing-word" id="typingText"></span><span class="cursor" id="cursor"></span>
+            </span>
+        </h1>
+
+        <p class="banner-subtext" id="bannerSub">
+            سياق تجمع بين الذكاء الاصطناعي والتشفير المتقدم لحماية هويتك الرقمية بأعلى معايير الأمان.
+        </p>
+<a href="/frontend/register.html">
+        <button class="banner-cta" id="bannerCta">
+            <svg class="shield-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z"/>
+            </svg>
+            <span id="ctaLabel">ابدأ الآن</span>
+        </button>
+        </a>
+    </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <div class="stat-number">+٢٠م</div>
+            <div class="stat-label" id="stat1">مستخدم نشط</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">٩٩.٩٪</div>
+            <div class="stat-label" id="stat2">وقت تشغيل مضمون</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">٢٥٦</div>
+            <div class="stat-label" id="stat3">تشفير بت</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">٠</div>
+            <div class="stat-label" id="stat4">خروقات أمنية</div>
+        </div>
+    </div>
+</div>
+
+<script src="/frontend/lang.js"></script>
+<script src="/frontend/profile.js"></script>
+
+</body>
+</html>

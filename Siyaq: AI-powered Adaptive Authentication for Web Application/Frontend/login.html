@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تسجيل الدخول - سياق</title>
+    <link rel="stylesheet" href="/frontend/style.css">
+</head>
+<body>
+
+<!-- ANIMATED BACKGROUND -->
+<div class="page-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+<!-- TOP BAR -->
+<header class="top-bar">
+    <div class="top-bar-container">
+        <div class="top-bar-container">
+        <div class="logo">
+    <img src="/frontend/logo.png" alt="سياق" height="150">
+</div>
+        <nav class="nav-links">
+           <a id="navHome" href="/frontend/home.html">الرئيسية</a>
+            <a href="/frontend/about.html" id="navAbout">عن سياق</a>
+            <a href="/frontend/login.html" href="#">تسجيل دخول</a>
+        </nav>
+        <div class="top-actions">
+            <button class="lang-btn" id="btnAr" onclick="setLang('ar')">العربية</button>
+            |
+            <button class="lang-btn" id="btnEn" onclick="setLang('en')">English</button>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<div class="login-container">
+    <h2 id="loginTitle">تسجيل الدخول</h2>
+
+    <label for="usernameInput" id="loginUserLabel">اسم المستخدم</label>
+    <input type="text" id="usernameInput">
+
+    <label for="passwordInput" id="loginPassLabel">كلمة المرور</label>
+    <input type="password" id="passwordInput">
+
+    <div class="forgot">
+        <a href="/frontend/forgot-password.html" id="forgotPass">نسيت كلمة المرور؟</a>
+    </div>
+
+    <button class="btn" id="loginBtn">تسجيل الدخول</button>
+
+    <div class="link">
+        <span id="newUserText">مستخدم جديد؟</span>
+        <a href="/frontend/register.html" id="createAccount">إنشاء حساب</a>
+    </div>
+</div>
+
+<script src="/frontend/validation.js"></script>
+<script src="/frontend/login.js"></script>
+<script src="/frontend/lang.js"></script>
+</body>
+</html>

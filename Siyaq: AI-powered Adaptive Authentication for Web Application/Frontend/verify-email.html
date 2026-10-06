@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>التحقق من البريد الإلكتروني - سياق</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── OTP Input Row ── */
+        .otp-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 24px 0;
+            direction: ltr;
+        }
+        .otp-box {
+            width: 52px;
+            height: 60px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            border: 2px solid #30363d;
+            border-radius: 10px;
+            background: #0d1117;
+            color: #58a6ff;
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+            caret-color: #58a6ff;
+        }
+        .otp-box:focus {
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 3px rgba(88,166,255,.20);
+        }
+        .otp-box.filled { border-color: #3fb950; color: #3fb950; }
+
+        /* ── Email badge ── */
+        .email-badge {
+            display: inline-block;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 14px;
+            color: #8b949e;
+            margin-bottom: 6px;
+        }
+        .email-badge strong { color: #58a6ff; }
+
+        /* ── Timer ── */
+        #timer {
+            font-size: 13px;
+            color: #8b949e;
+            margin-top: 8px;
+            min-height: 20px;
+        }
+        #timer.expired { color: #f85149; }
+
+        /* ── Resend link ── */
+        #resendLink {
+            color: #58a6ff;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: underline;
+            display: none;
+        }
+
+        /* ── Status message ── */
+        #statusMsg {
+            font-size: 14px;
+            min-height: 20px;
+            margin-top: 6px;
+        }
+        .msg-error   { color: #f85149; }
+        .msg-success { color: #3fb950; }
+    </style>
+</head>
+<body>
+
+<!-- ANIMATED BACKGROUND -->
+<div class="page-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+</div>
+
+<!-- TOP BAR -->
+<header class="top-bar">
+    <div class="top-bar-container">
+        <div class="logo">
+            <img src="logo.png" alt="سياق" height="150">
+        </div>
+        <nav class="nav-links">
+            <a href="home.html" id="navHome">الرئيسية</a>
+            <a href="about.html" id="navAbout">عن سياق</a>
+          <a href="/frontend/login.html" href="#">تسجيل دخول</a>
+        </nav>
+        <div class="top-actions">
+            <button class="lang-btn" id="btnAr" onclick="setLang('ar')">العربية</button>
+            |
+            <button class="lang-btn" id="btnEn" onclick="setLang('en')">English</button>
+        </div>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<div class="login-container" style="max-width:440px; text-align:center;">
+
+    <!-- Icon -->
+    <div style="font-size:48px; margin-bottom:8px;">📧</div>
+
+    <h2 id="verifyTitle" style="margin-bottom:6px;">التحقق من البريد الإلكتروني</h2>
+
+    <p id="verifySubtitle" style="color:#8b949e; font-size:14px; margin-bottom:12px;">
+        أرسلنا رمز التحقق إلى
+    </p>
+    <div class="email-badge">
+        <strong id="displayEmail">—</strong>
+    </div>
+
+    <!-- OTP Boxes -->
+    <div class="otp-row" id="otpRow">
+        <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]">
+        <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]">
+        <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]">
+        <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]">
+        <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]">
+        <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]">
+    </div>
+
+    <div id="statusMsg"></div>
+
+    <button class="btn" id="verifyBtn" style="margin-top:16px;" id="verifyBtnLabel">تحقق</button>
+
+    <!-- Timer & Resend -->
+    <div style="margin-top:14px;">
+        <span id="timer"></span>
+        <span id="resendLink">إعادة إرسال الرمز</span>
+    </div>
+
+    <div class="link" style="margin-top:18px;">
+        <a href="login.html" id="backToLoginLink">← العودة لتسجيل الدخول</a>
+    </div>
+</div>
+
+<script src="lang.js"></script>
+<script src="verify-email.js"></script>
+</body>
+</html>
