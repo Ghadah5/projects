@@ -1,0 +1,51 @@
+{
+  "version": "v5-final",
+  "model_features": [
+    "failed_attempts_count",
+    "is_new_ip",
+    "is_new_country",
+    "is_new_city",
+    "is_unusual_time",
+    "is_unusual_day",
+    "is_new_os",
+    "is_new_browser"
+  ],
+  "feature_weights": {
+    "is_new_country": 3,
+    "is_new_ip": 2,
+    "is_new_city": 2,
+    "is_unusual_time": 2,
+    "is_unusual_day": 1,
+    "is_new_os": 1,
+    "is_new_browser": 1
+  },
+  "cf_stepped_scale": {
+    "0": 0,
+    "1": 1,
+    "2": 4,
+    "3": 5,
+    "4": 6,
+    "5+": 10
+  },
+  "score_thresholds": {
+    "normal_max": 2,
+    "suspicious_max": 9,
+    "max_score": 22
+  },
+  "risk_weights": [
+    0.0,
+    0.4,
+    1.0
+  ],
+  "decision_thresholds": {
+    "allow": 0.25,
+    "block": 0.6
+  },
+  "boundary_noise_rate": 0.15,
+  "cv_accuracy": "0.9539 \u00b1 0.0007",
+  "cv_auc": "0.9846 \u00b1 0.0002",
+  "post_model_overrides": {
+    "is_attack_ip=1": "BLOCK immediately",
+    "has_profile=False": "enforce MFA immediately"
+  }
+}

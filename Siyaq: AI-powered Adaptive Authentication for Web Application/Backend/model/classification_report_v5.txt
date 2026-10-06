@@ -1,0 +1,18 @@
+CV Accuracy : 0.9539 ± 0.0007
+CV AUC-ROC  : 0.9846 ± 0.0002
+
+              precision    recall  f1-score   support
+
+      Normal       0.95      0.98      0.97     42327
+  Suspicious       0.95      0.88      0.91     18481
+    Critical       0.98      1.00      0.99      5595
+
+    accuracy                           0.95     66403
+   macro avg       0.96      0.95      0.96     66403
+weighted avg       0.95      0.95      0.95     66403
+
+AUC-ROC: 0.9847
+Confusion Matrix:
+[[41551   776     0]
+ [ 2194 16172   115]
+ [    0     7  5588]]
