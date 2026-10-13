@@ -190,7 +190,7 @@ def register_user(data: RegisterRequest):
 
 
 # ══════════════════════════════════════════════
-#  Verify Email  ← FIX: كان مفقود كلياً
+#  Verify Email
 # ══════════════════════════════════════════════
 
 @app.post("/api/verify-email")
@@ -198,7 +198,7 @@ def verify_email(data: VerifyEmailRequest):
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
 
-    # جيب آخر كود غير مستخدم لهذا المستخدم
+    
     cursor.execute("""
         SELECT * FROM email_verification
         WHERE user_id = %s AND used = 0
@@ -211,17 +211,17 @@ def verify_email(data: VerifyEmailRequest):
         cursor.close(); conn.close()
         raise HTTPException(status_code=400, detail="لا يوجد رمز تحقق نشط لهذا المستخدم")
 
-    # تحقق من انتهاء الصلاحية
+   
     if datetime.now() > row["expires_at"]:
         cursor.close(); conn.close()
         raise HTTPException(status_code=400, detail="انتهت صلاحية الرمز. اضغط على إعادة الإرسال")
 
-    # تحقق من صحة الكود
+   
     if row["verification_code"] != data.code.strip():
         cursor.close(); conn.close()
         raise HTTPException(status_code=400, detail="الرمز غير صحيح")
 
-    # علّم الكود كمستخدم وفعّل الحساب
+
     cursor.execute("""
         UPDATE email_verification SET used = 1
         WHERE verification_id = %s
@@ -239,7 +239,7 @@ def verify_email(data: VerifyEmailRequest):
 
 
 # ══════════════════════════════════════════════
-#  Resend Verification Code  ← FIX: كان مفقود
+#  Resend Verification Code  
 # ══════════════════════════════════════════════
 
 @app.post("/api/resend-code")
@@ -261,13 +261,13 @@ def resend_code(data: ResendCodeRequest):
         cursor.close(); conn.close()
         raise HTTPException(status_code=400, detail="الحساب محقق مسبقاً")
 
-    # أبطل الكودات القديمة
+
     cursor.execute("""
         UPDATE email_verification SET used = 1
         WHERE user_id = %s AND used = 0
     """, (user["user_id"],))
 
-    # أنشئ كود جديد
+    
     code = generate_code()
     expires_at = datetime.now() + timedelta(minutes=1)
 
@@ -488,7 +488,7 @@ def login_user(data: LoginRequest, request: Request):
 
 
 # ══════════════════════════════════════════════
-#  Verify OTP (MFA)  ← جديد
+#  Verify OTP (MFA)  
 # ══════════════════════════════════════════════
 
 @app.post("/api/verify-otp")
