@@ -1,9 +1,9 @@
 DB_HOST="localhost"
 DB_USER="root"
-DB_PASSWORD="StrongPassword1233@"
+DB_PASSWORD="؟؟؟؟؟؟؟؟؟"
 DB_NAME="adaptive_auth"
 
-SECRET_KEY="c3ac4d850dd5a844ecf2f29edd237ebe40e111939c4ac2395c5feeb2cdcdde6e"   #ريماس اضافته جديد
+SECRET_KEY="c3ac4d850dd5a844ecf2f29edd237ebe40e111939c4ac2395c5feeb2cdcdde6e"
 ALGORITHM="HS256"
 RESET_TOKEN_EXPIRE_MINUTES = 15
 
